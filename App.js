@@ -5,8 +5,6 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import Tabs from './Navigation/TabNavigator';
 import Header from './components/Header';
 
-
-
 const App = () => {
   return(
     <NavigationContainer>

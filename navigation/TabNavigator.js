@@ -54,7 +54,7 @@ const Tabs = () => {
 const styles = StyleSheet.create({
     tabBar: {
         position: "absolute",
-        bottom: 20,
+        bottom: 30,
         left: 20,
         right: 20,
         marginHorizontal: 20,
