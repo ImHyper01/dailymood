@@ -5,21 +5,22 @@ export default function Mood() {
   const [selectedEmoji, setSelectedEmoji] = useState(null);
 
   const emojis = [
-    require('../assets/emojis/happy-face.png'),
-    require('../assets/emojis/smile.png'),
-    require('../assets/emojis/confused.png'),
-    require('../assets/emojis/sad.png'),
-    require('../assets/emojis/angry.png'),
+    { img: require('../assets/emojis/happy-face.png'), label: 'Happy' },
+    { img: require('../assets/emojis/smile.png'), label: 'Smiling' },
+    { img: require('../assets/emojis/confused.png'), label: 'Normal' },
+    { img: require('../assets/emojis/sad.png'), label: 'Sad' },
+    { img: require('../assets/emojis/angry.png'), label: 'Angry' },
   ];
 
   return (
     <View style={styles.container}>
       <Text style={styles.text}>Kies je stemming vandaag</Text>
 
-      {/* Vergrote emoji */}
+      {/* Vergrote emoji + tekst */}
       {selectedEmoji !== null && (
         <View style={styles.selectedEmojiContainer}>
-          <Image source={emojis[selectedEmoji]} style={styles.selectedEmoji} />
+          <Image source={emojis[selectedEmoji].img} style={styles.selectedEmoji} />
+          <Text style={styles.selectedEmojiLabel}>{emojis[selectedEmoji].label}</Text>
         </View>
       )}
 
@@ -35,7 +36,7 @@ export default function Mood() {
               style={styles.emojiWrapper}
               onPress={() => setSelectedEmoji(index)}
             >
-              <Image source={emoji} style={styles.emoji} />
+              <Image source={emoji.img} style={styles.emoji} />
             </TouchableOpacity>
           ))}
         </ScrollView>
@@ -86,8 +87,14 @@ const styles = StyleSheet.create({
     marginTop: 30,
   },
   selectedEmoji: {
-    width: 120,
-    height: 120,
+    width: 220,
+    height: 220,
+  },
+  selectedEmojiLabel: {
+    fontSize: 18,
+    fontWeight: '500',
+    marginTop: 10,
+    color: '#333',
   },
   bevButton: {
     backgroundColor: '#5F67EA',
@@ -95,7 +102,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     borderRadius: 8,
     alignItems: 'center',
-    marginTop: 40,
   },
   bevButtonText: {
     color: '#fff',
