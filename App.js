@@ -1,21 +1,18 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
-import BottomTab from './navigation/tabs';
+import React from "react";
+import { NavigationContainer} from "@react-navigation/native";
+import Tabs from './Navigation/TabNavigator';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Hello world</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+
+const App = () => {
+  return(
+    <NavigationContainer>
+    <SafeAreaView style={{ flex: 1 }} edges={['bottom']}>
+      <Tabs />
+    </SafeAreaView>
+  </NavigationContainer>
+  )
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App;
+
