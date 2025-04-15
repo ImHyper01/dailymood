@@ -1,15 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import DatePicker from '../components/Date';
 import { useTranslation } from 'react-i18next';
+import ThemeContext from '../theme/themeContext'; // Zorg ervoor dat het pad klopt
 
 export default function Home() {
   const [selectedDate, setSelectedDate] = useState(null);
   const { t } = useTranslation();
+  const { currentTheme } = useContext(ThemeContext);
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.text}>{t('home.greeting')}</Text>
+    <View style={[styles.container, { backgroundColor: currentTheme.background }]}>
+      <Text style={[styles.text, { color: currentTheme.color }]}>{t('home.greeting')}</Text>
 
       <DatePicker
         selectedDate={selectedDate}
@@ -27,7 +29,6 @@ export default function Home() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
     paddingHorizontal: 20,
   },
   text: {

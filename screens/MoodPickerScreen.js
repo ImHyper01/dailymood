@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { StyleSheet, Text, View, Image, ScrollView, TouchableOpacity } from 'react-native';
 import { useTranslation } from 'react-i18next';
+import ThemeContext from '../theme/themeContext'; // Zorg ervoor dat het pad klopt
 
 export default function Mood() {
   const [selectedEmoji, setSelectedEmoji] = useState(null);
   const { t } = useTranslation();
+  const { currentTheme } = useContext(ThemeContext);
 
   const emojis = [
     { img: require('../assets/emojis/happy-face.png'), label: t('mood.happy') },
@@ -15,13 +17,13 @@ export default function Mood() {
   ];
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.text}>{t('mood.pickYourMood')}</Text>
+    <View style={[styles.container, { backgroundColor: currentTheme.background }]}>
+      <Text style={[styles.text, { color: currentTheme.color }]}>{t('mood.pickYourMood')}</Text>
 
       {selectedEmoji !== null && (
         <View style={styles.selectedEmojiContainer}>
           <Image source={emojis[selectedEmoji].img} style={styles.selectedEmoji} />
-          <Text style={styles.selectedEmojiLabel}>{emojis[selectedEmoji].label}</Text>
+          <Text style={[styles.selectedEmojiLabel, { color: currentTheme.color }]}>{emojis[selectedEmoji].label}</Text>
         </View>
       )}
 
@@ -53,7 +55,6 @@ export default function Mood() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
     paddingHorizontal: 20,
   },
   text: {
@@ -94,7 +95,6 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: '500',
     marginTop: 10,
-    color: '#333',
   },
   bevButton: {
     backgroundColor: '#5F67EA',
