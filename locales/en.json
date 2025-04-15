@@ -1,0 +1,18 @@
+{
+  "home": {
+    "greeting": "How are you feeling today?!"
+  },
+  "mood": {
+    "pickYourMood": "Pick your mood today",
+    "happy": "Happy",
+    "smiling": "Smiling",
+    "normal": "Normal",
+    "sad": "Sad",
+    "angry": "Angry",
+    "confirmButton": "Confirm your mood!",
+    "confirmed": "Mood confirmed!"
+  },
+  "settings": {
+    "title": "Settings"
+  }
+}

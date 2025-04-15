@@ -1,0 +1,18 @@
+{
+  "home": {
+    "greeting": "Hoe voel jij je vandaag?!"
+  },
+  "mood": {
+    "pickYourMood": "Kies je stemming vandaag",
+    "happy": "Blij",
+    "smiling": "Glimlachend",
+    "normal": "Normaal",
+    "sad": "Verdrietig",
+    "angry": "Boos",
+    "confirmButton": "Bevestig je mood!",
+    "confirmed": "Stemming bevestigd!"
+  },
+  "settings": {
+    "title": "Instellingen"
+  }
+}

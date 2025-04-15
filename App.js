@@ -1,6 +1,8 @@
 import React from "react";
 import { NavigationContainer} from "@react-navigation/native";
 import { SafeAreaView } from 'react-native-safe-area-context';
+import './Taal/i18n';
+
 
 import Tabs from './Navigation/TabNavigator';
 import Header from './components/Header';

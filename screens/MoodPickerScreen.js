@@ -1,22 +1,23 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, Image, ScrollView, TouchableOpacity } from 'react-native';
+import { useTranslation } from 'react-i18next';
 
 export default function Mood() {
   const [selectedEmoji, setSelectedEmoji] = useState(null);
+  const { t } = useTranslation();
 
   const emojis = [
-    { img: require('../assets/emojis/happy-face.png'), label: 'Happy' },
-    { img: require('../assets/emojis/smile.png'), label: 'Smiling' },
-    { img: require('../assets/emojis/confused.png'), label: 'Normal' },
-    { img: require('../assets/emojis/sad.png'), label: 'Sad' },
-    { img: require('../assets/emojis/angry.png'), label: 'Angry' },
+    { img: require('../assets/emojis/happy-face.png'), label: t('mood.happy') },
+    { img: require('../assets/emojis/smile.png'), label: t('mood.smiling') },
+    { img: require('../assets/emojis/confused.png'), label: t('mood.normal') },
+    { img: require('../assets/emojis/sad.png'), label: t('mood.sad') },
+    { img: require('../assets/emojis/angry.png'), label: t('mood.angry') },
   ];
 
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Kies je stemming vandaag</Text>
+      <Text style={styles.text}>{t('mood.pickYourMood')}</Text>
 
-      {/* Vergrote emoji + tekst */}
       {selectedEmoji !== null && (
         <View style={styles.selectedEmojiContainer}>
           <Image source={emojis[selectedEmoji].img} style={styles.selectedEmoji} />
@@ -42,9 +43,8 @@ export default function Mood() {
         </ScrollView>
       </View>
 
-      {/* Bevestig button */}
-      <TouchableOpacity style={styles.bevButton} onPress={() => alert("Mood bevestigd!")}>
-        <Text style={styles.bevButtonText}>Bevestig je mood!</Text>
+      <TouchableOpacity style={styles.bevButton} onPress={() => alert(t('mood.confirmed'))}>
+        <Text style={styles.bevButtonText}>{t('mood.confirmButton')}</Text>
       </TouchableOpacity>
     </View>
   );

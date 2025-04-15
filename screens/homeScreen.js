@@ -1,20 +1,22 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import DatePicker from '../components/Date'; // Zorg ervoor dat het pad klopt
+import DatePicker from '../components/Date';
+import { useTranslation } from 'react-i18next';
 
 export default function Home() {
   const [selectedDate, setSelectedDate] = useState(null);
+  const { t } = useTranslation();
 
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Hoe voel jij je vandaag?!</Text>
+      <Text style={styles.text}>{t('home.greeting')}</Text>
 
       <DatePicker
         selectedDate={selectedDate}
         onDateSelect={setSelectedDate}
         customStyle={{
           selectedDateContainer: {
-            backgroundColor: '#ff6347', 
+            backgroundColor: '#ff6347',
           },
         }}
       />
