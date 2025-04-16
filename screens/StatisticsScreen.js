@@ -1,14 +1,25 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { StyleSheet, Text, View, Dimensions } from 'react-native';
 import { PieChart } from 'react-native-chart-kit';
-import ThemeContext from '../theme/themeContext'; 
+import ThemeContext from '../theme/themeContext';
+import { fetchMoodStats } from '../database/database'; 
 
 const screenWidth = Dimensions.get('window').width;
 
-export default function Stats({ moodData = {} }) {
+export default function Stats() {
+
   const { currentTheme } = useContext(ThemeContext);
+  const [moodData, setMoodData] = useState({});
+  
   const colors = ['#ff6b6b', '#feca57', '#48dbfb', '#1dd1a1', '#5f27cd'];
   const emotionLabels = ['Blij', 'Normaal', 'Verdrietig', 'Glimlachend', 'Boos'];
+
+  useEffect(() => {
+    const loadMoodStats = async() => {
+      await fetchMoodStats(setMoodData);
+    };
+    loadMoodStats();
+  }, []);
 
   const data = emotionLabels.map((label, index) => ({
     name: label,

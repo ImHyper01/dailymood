@@ -11,7 +11,7 @@ import ThemeProvider from './theme/themeProvider'; // zorg dat het pad klopt
 const App = () => {
 
   useEffect(() => {
-    initDB();
+    initDB()
   }, []);
 
   return (
