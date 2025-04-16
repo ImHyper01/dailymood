@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import ThemeContext from '../theme/themeContext'; // Zorg ervoor dat het pad klopt
 
 export default function Mood() {
-  const [selectedEmoji, setSelectedEmoji] = useState(null);
+  const [selectedEmoji, setSelectedEmoji] = useState(0);
   const { t } = useTranslation();
   const { currentTheme } = useContext(ThemeContext);
 
@@ -20,12 +20,12 @@ export default function Mood() {
     <View style={[styles.container, { backgroundColor: currentTheme.background }]}>
       <Text style={[styles.text, { color: currentTheme.color }]}>{t('mood.pickYourMood')}</Text>
 
-      {selectedEmoji !== null && (
+      
         <View style={styles.selectedEmojiContainer}>
           <Image source={emojis[selectedEmoji].img} style={styles.selectedEmoji} />
           <Text style={[styles.selectedEmojiLabel, { color: currentTheme.color }]}>{emojis[selectedEmoji].label}</Text>
         </View>
-      )}
+    
 
       <View style={styles.emojiScroll}>
         <ScrollView
