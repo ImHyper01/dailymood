@@ -1,6 +1,11 @@
 {
   "home": {
-    "greeting": "Hoe voel jij je vandaag?!"
+    "greeting": "Hoe voel jij je vandaag?!",
+    "loginDays": "dagen ingelogd",
+    "moodStats": "Je emoties chart",
+    "selectDate": "Je agenda",
+    "firstLogin": "dag",
+    "keepGoing": "Ga zo door!"
   },
   "mood": {
     "pickYourMood": "Kies je stemming vandaag",

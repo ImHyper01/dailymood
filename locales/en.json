@@ -1,6 +1,11 @@
 {
   "home": {
-    "greeting": "How are you feeling today?!"
+    "greeting": "How are you feeling today?!",
+    "loginDays": "days login",
+    "moodStats": "Youre emotion chart",
+    "selectDate": "Your agenda",
+    "firstLogin": "Day",
+    "keepGoing": "Keep going!"
   },
   "mood": {
     "pickYourMood": "Pick your mood today",
