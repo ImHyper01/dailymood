@@ -10,15 +10,12 @@ export default function Mood() {
   const { currentTheme } = useContext(ThemeContext);
 
   const emojis = [
-    { img: require('../assets/emojis/happy-face.png'), label: t('mood.happy') },
-    { img: require('../assets/emojis/smile.png'), label: t('mood.smiling') },
-    { img: require('../assets/emojis/confused.png'), label: t('mood.normal') },
-    { img: require('../assets/emojis/sad.png'), label: t('mood.sad') },
-    { img: require('../assets/emojis/angry.png'), label: t('mood.angry') },
+    { img: require('../assets/emojis/happy-face.png'), label: 'Blij' },
+    { img: require('../assets/emojis/confused.png'), label: 'Normaal' },
+    { img: require('../assets/emojis/sad.png'), label: 'Verdrietig' },
+    { img: require('../assets/emojis/smile.png'), label: 'Glimlachend' },
+    { img: require('../assets/emojis/angry.png'), label: 'Boos' },
   ];
-
-  // Verbindt de emoji's met de moods
-  const moods = ['Blij', 'Glimlachend', 'Normaal', 'Verdrietig', 'Boos'];
 
   const handleMoodPress = async (mood) => {
     await insertMood(mood);
@@ -35,16 +32,12 @@ export default function Mood() {
       </View>
 
       <View style={styles.emojiScroll}>
-        <ScrollView
-          horizontal={true}
-          showsHorizontalScrollIndicator={false}
-          style={styles.imageViewContainer}
-        >
+        <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.imageViewContainer}>
           {emojis.map((emoji, index) => (
             <TouchableOpacity
               key={index}
               style={styles.emojiWrapper}
-              onPress={() => setSelectedEmoji(index)} // Emoji selecteren
+              onPress={() => setSelectedEmoji(index)}
             >
               <Image source={emoji.img} style={styles.emoji} />
             </TouchableOpacity>
@@ -52,10 +45,9 @@ export default function Mood() {
         </ScrollView>
       </View>
 
-      {/* De knop waar de mood wordt bevestigd */}
       <TouchableOpacity 
         style={styles.bevButton} 
-        onPress={() => handleMoodPress(moods[selectedEmoji])}  // De geselecteerde mood wordt opgeslagen
+        onPress={() => handleMoodPress(emojis[selectedEmoji].label)}
       >
         <Text style={styles.bevButtonText}>{t('mood.confirmButton')}</Text>
       </TouchableOpacity>
